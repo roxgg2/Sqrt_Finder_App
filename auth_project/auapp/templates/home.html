@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{user.username}}</h1>
+    <h1>Square root finder</h1>
+    <script>
+        function check()
+            {
+                let num = document.getElementById("id_num");
+                let msg = document.getElementById("msg");
+                if(num.value=="")
+                {
+                    alert("input is empty");
+                    msg.innerHTML="";
+                    num.focus(); 
+                    return false;
+                }
+                let n =parseFloat(num.value)
+                if(n<=0)
+                {
+                    alert("Negative number is not allowed");
+                    msg.innerHTML="";
+                    num.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+<form onsubmit = "return check()">
+<input type ="number" placeholder="Enter number" step="any" name = "num" id="id_num"/>
+<br><br>
+<input type = "submit" value="Find Square Root"/>
+</form>
+<h2 id="msg"> {{ msg }} </h2>
+{% endblock %}
